@@ -1,0 +1,5 @@
+'use strict';
+const $=id=>document.getElementById(id);
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const factor={car:.16591,bus:.10151,rail:.02121,walk:0};
+$('wallet-form').addEventListener('submit',e=>{e.preventDefault();let km=+$('wallet-distance').value,days=+$('wallet-days').value,cur=$('wallet-current').value,alt=$('wallet-alternative').value,c0=+$('wallet-cost-current').value,c1=+$('wallet-cost-alt').value;if(!(km>.0&&km<=150&&days>=1&&days<=31&&c0>=0&&c1>=0))return;let money=(c0-c1)*days,carbon=km*2*days*(factor[cur]-factor[alt]);$('wallet-money').textContent=(money>=0?'+':'−')+Math.abs(money).toFixed(0)+' AED';$('wallet-carbon').textContent=(carbon>=0?'+':'−')+Math.abs(carbon).toFixed(1)+' kg';$('wallet-message').textContent=`For ${days} round-trip days (${(2*km*days).toFixed(0)} km), the alternative ${money>=0?'saves':'costs an additional'} ${Math.abs(money).toFixed(0)} AED and ${carbon>=0?'avoids':'adds'} about ${Math.abs(carbon).toFixed(1)} kg operational CO₂e under UK proxy factors. Neither fares nor these emissions factors are verified Dubai route values.`;});

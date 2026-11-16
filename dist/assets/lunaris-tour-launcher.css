@@ -1,0 +1,7 @@
+
+/* LUNARIS final guided tour launcher — isolated, accessible, non-invasive */
+.lunaris-tour-launcher { position:fixed; right:18px; bottom:18px; z-index:9800; display:inline-flex; align-items:center; gap:9px; padding:11px 15px; border:1px solid rgba(194,245,103,.7); border-radius:100px; background:#bdf36a; color:#101710!important; text-decoration:none!important; font:700 13px/1.3 system-ui, sans-serif; box-shadow:0 6px 30px rgba(0,0,0,.28); max-width:calc(100vw - 36px); }
+.lunaris-tour-launcher:hover,.lunaris-tour-launcher:focus-visible{background:#e0ffb5;outline:2px solid #101710;outline-offset:2px}
+.lunaris-tour-launcher svg{flex-shrink:0; width:17px;height:17px}
+@media(max-width:700px){ .lunaris-tour-launcher{bottom:74px; right:9px;padding:9px 12px;font-size:12px;} }
+@media(prefers-reduced-motion:reduce){.lunaris-tour-launcher{transition:none}}

@@ -1,0 +1,12 @@
+.venv/
+.chrome-*/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.data/
+*.db
+preview-*.png
+homepage-*.png
+*-qa.png
+.DS_Store
+

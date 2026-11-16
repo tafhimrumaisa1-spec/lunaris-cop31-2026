@@ -1,0 +1,10 @@
+{
+  "package": "lunaris_choices",
+  "sources": [
+    {"id": "travel_factors", "name": "UK Government GHG conversion factors for company reporting", "url": "https://www.gov.uk/government/publications/greenhouse-gas-reporting-conversion-factors-2026", "type": "official revised flat factor table", "year_used": 2026, "license_note": "Open Government Licence v3.0", "status": "verified_2026-11-15", "snapshot_sha256": "A9A455AB396DAE226D510C7BE6233748416D490C41A5D20F3DC7A0C45FEECD5E", "jurisdiction_note": "UK factors used as a transparent proxy for UAE; no UAE/RTA-specific factor claimed"},
+    {"id": "food_factors", "name": "Our World in Data / Poore & Nemecek 2018", "url": "https://ourworldindata.org/grapher/ghg-per-kg-poore", "type": "published category-average dataset", "year_used": 2018, "license_note": "OWID content CC BY; underlying provider terms apply", "status": "verified_2026-11-15", "snapshot_sha256": "4C44EFB5691F50DAE1577A3A774178DB119C77E661DAEA47AC3A7472B828FD41"},
+    {"id": "dewa_tariff", "name": "Dubai Electricity and Water Authority slab tariff", "url": "https://www.dewa.gov.ae/en/consumer/billing/slab-tariff", "type": "official tariff", "status": "verified_2026-11-15", "note": "Residential/commercial electricity slabs, November 2026 fuel surcharge and 5% VAT integrated in the web calculator; meter service charge excluded."},
+    {"id": "routing", "name": "Routing provider", "url": null, "type": "provider interface", "status": "DISABLED", "note": "No licensed provider/key. Interface exists; no routes, times, or traffic are produced."},
+    {"id": "places", "name": "Curated place entries", "url": null, "type": "curated/licensed", "status": "DEMO_ONLY", "note": "No real venue records shipped. Real entries require source_url, license_note, retrieved_at, verified_by."}
+  ]
+}

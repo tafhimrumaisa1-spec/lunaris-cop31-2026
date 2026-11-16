@@ -1,0 +1,14 @@
+{
+  "meta": {
+    "note": "Only clearly fictional DEMO entries are shipped. Real venues may be added to `entries` ONLY with source_name, source_url (https), license_note, retrieved_at and verified_by; loader rejects anything else.",
+    "city_id": "dubai"
+  },
+  "entries": [
+    {"id": "demo-cafe-001", "name": "DEMO Cafe Example (fictional)", "city_id": "dubai", "categories": ["cafe"], "setting": "indoor", "is_demo": true,
+     "description": "Placeholder to exercise the UI. Not a real venue.", "map_link": null, "hours": null},
+    {"id": "demo-walk-001", "name": "DEMO Waterfront Walk Example (fictional)", "city_id": "dubai", "categories": ["walk"], "setting": "outdoor", "is_demo": true,
+     "description": "Placeholder outdoor entry. Not a real route.", "map_link": null, "hours": null},
+    {"id": "demo-culture-001", "name": "DEMO Gallery Example (fictional)", "city_id": "dubai", "categories": ["culture", "indoor"], "setting": "indoor", "is_demo": true,
+     "description": "Placeholder indoor culture entry. Not a real venue.", "map_link": null, "hours": null}
+  ]
+}

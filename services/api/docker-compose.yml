@@ -1,0 +1,29 @@
+# Local development stack: PostgreSQL + API on http://localhost:8000
+# Usage:  cp .env.example .env && docker compose up --build
+services:
+  db:
+    image: postgres:16
+    environment:
+      POSTGRES_USER: lunaris
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?set POSTGRES_PASSWORD in .env}
+      POSTGRES_DB: lunaris
+    ports: ["5432:5432"]
+    volumes: ["pgdata:/var/lib/postgresql/data"]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U lunaris -d lunaris"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+  api:
+    build: .
+    depends_on:
+      db: { condition: service_healthy }
+    environment:
+      LUNARIS_ENV: development
+      LUNARIS_DATABASE_URL: postgresql://lunaris:${POSTGRES_PASSWORD}@db:5432/lunaris
+      LUNARIS_AUTO_CREATE_SCHEMA: "false"   # schema comes from Alembic (entrypoint runs `alembic upgrade head`)
+      LUNARIS_SEED_DEMO_DATA: "true"
+      LUNARIS_CORS_ALLOW_ORIGINS: http://localhost:3000
+    ports: ["8000:8000"]
+volumes:
+  pgdata:

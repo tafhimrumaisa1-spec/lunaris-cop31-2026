@@ -1,0 +1,7 @@
+{
+  "release": "LUNARIS Consumer Intelligence v3.1 — browser-test candidate",
+  "date": "2026-11-15",
+  "in_scope": ["Explore source-attributed Dubai venue discovery", "HeatShield full-duration weather window ranking and daypart preference", "FoodPrint two-barcode identification and original source-linked manual product LCA comparison", "GreenMiles efficiency side-by-side and optional user grid factor", "WattFlow appliance energy scenarios", "Original Action Atlas and API preserved"],
+  "not_yet_verified": ["Deployed public site", "real Dubai ML trained model and independent benchmark", "earth engine measurements", "verified company-specific food emissions", "real-time venue hours and availability", "UAE-specific fleet/grid lifecycle factors", "fully integrated social network"],
+  "test_summary": {"backend_passed":131,"backend_skipped":1,"javascript_syntax":"passed","offline_chromium_dom_interactions":"passed","offline_mobile_horizontal_overflow":false,"hosted_browser_e2e":"not run"}
+}

@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0b1010">
+  <meta name="description" content="LUNARIS — a Dubai-first guide to better moments, choices and local action.">
+  <title>LUNARIS — Live Better. Leave Better.</title>
+  <link rel="icon" href="./favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./styles.css">
+  <link rel="stylesheet" href="/assets/lunaris-tour-launcher.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div id="app">
+    <header class="topbar">
+      <button class="brand" type="button" data-route="home" aria-label="LUNARIS home">
+        <span class="brand-mark" aria-hidden="true">✦</span>
+        <span>LUNARIS</span>
+      </button>
+      <div class="city-chip"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1116 0Z"/><circle cx="12" cy="10" r="2.5"/></svg> Dubai, UAE</div>
+      <button class="round-button" id="settings-button" type="button" aria-label="Open preferences">☰</button>
+    </header>
+
+    <main id="main" tabindex="-1">
+      <section class="screen active" id="home" data-screen="home">
+        <div class="hero">
+          <img src="./assets/dubai-blue-hour.png" alt="Dubai skyline beside a waterfront promenade at blue hour">
+          <div class="hero-shade"></div>
+          <div class="hero-copy">
+            <p class="eyebrow">POSTCARD 01 · DUBAI · <span id="dubai-time">LOCAL TIME</span></p>
+            <h1>Your city,<br><em>in its <wbr>element.</em></h1>
+            <p class="hero-deck" id="day-narrative">A quieter way to find the moments that feel like yours.</p>
+            <button class="primary light" type="button" data-route="heatshield">Find my moment <span>↗</span></button>
+          </div>
+          <div class="weather-stamp" id="weather-stamp">
+            <span class="stamp-label">FORECAST</span>
+            <strong id="weather-temp">—°</strong>
+            <span id="weather-state">Checking source…</span>
+          </div>
+        </div>
+
+        <section class="paper-section moment-section" aria-labelledby="moments-title">
+          <div class="section-intro">
+            <p class="eyebrow ink">FOR YOUR WEATHER</p>
+            <h2 id="moments-title">The day has<br><em>better hours.</em></h2>
+            <p id="weather-note">Forecast windows appear only when the weather source responds.</p>
+          </div>
+          <div class="time-strip" id="home-windows" aria-live="polite">
+            <div class="empty-line">Retrieving Dubai’s hourly forecast…</div>
+          </div>
+          <button class="text-link" type="button" data-route="heatshield">Compare all windows <span>→</span></button>
+        </section>
+
+        <section class="lumi-section" aria-labelledby="lumi-title">
+          <div class="lumi-portrait"><img src="./assets/lumi-cloud.png" alt="Lumi, LUNARIS’s blue cloud guide"></div>
+          <div class="lumi-copy">
+            <p class="eyebrow ink">MEET LUMI · YOUR FIELD GUIDE</p>
+            <h2 id="lumi-title">Small steps.<br><em>Clear receipts.</em></h2>
+            <p id="lumi-message">I’ll help you read the forecast, compare a choice, and find an official route into local action. No points for pretending.</p>
+            <div class="lumi-trail" id="lumi-trail" aria-label="LUNARIS progress"></div>
+            <div class="lumi-assistant" id="lumi-assistant" aria-label="Ask Lumi climate guide">
+              <div class="lumi-assistant-top"><strong>Ask Lumi</strong><span>Evidence-aware beta · no AI key needed</span></div>
+              <p class="lumi-helper">Ask about your forecast, when to go outside, climate choices, or city action. Lumi uses known app information, not a generative AI model.</p>
+              <div class="lumi-quick-asks" role="group" aria-label="Suggested questions"><button type="button" data-lumi-ask="What is the weather in Dubai?">Dubai weather</button><button type="button" data-lumi-ask="When should I go outside?">Plan outside</button><button type="button" data-lumi-ask="How can I help improve Dubai?">Improve my city</button><button type="button" data-lumi-ask="How can I save electricity?">Save energy</button></div>
+              <form id="lumi-ask-form" class="lumi-form"><label for="lumi-question">Your question</label><div class="lumi-input-row"><input id="lumi-question" type="text" maxlength="280" required autocomplete="off" placeholder="Ask about Dubai, heat, travel, food…"><button type="submit">Ask ↗</button></div></form>
+              <div class="lumi-answer" id="lumi-answer" role="status" aria-live="polite"><strong>Lumi · Your local climate guide</strong><p>Ask me about your forecast or how LUNARIS can help. I won't guess missing conditions or invent environmental claims.</p></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="cop31-app-launch" aria-labelledby="cop31-app-title"><div class="cop31-app-copy"><span class="eyebrow ink">COP31 / ACTION &amp; RESILIENCE LAB</span><h2 id="cop31-app-title">A city worth protecting.<br><em>People worth protecting.</em></h2><p>Explore Action Atlas scenarios, a construction-worker heat-safety prototype, a manual carbon wallet, climate-proof home checklist, food-waste planning and insurance education. Assumptions and evidence status are explicit.</p><a class="primary ink-button" href="./cop31-lab/">Enter the guided experience ↗</a></div><div class="cop31-app-mark" aria-hidden="true">✳</div></section>
+
+        <section class="editorial-grid">
+          <article class="feature-photo">
+            <img src="./assets/ghaf-courtyard.png" alt="A shaded courtyard beneath a ghaf tree">
+            <div class="photo-caption">
+              <span>FIELD NOTE · ATMOSPHERE JOURNAL</span>
+              <h3>Shade is a destination, too.</h3>
+              <button type="button" data-route="explore">Open the journal →</button>
+            </div>
+          </article>
+          <article class="ink-story">
+            <p class="eyebrow">ONE SMALLER CHOICE</p>
+            <h3>Same distance.<br><em>Different trace.</em></h3>
+            <p>Compare transport modes using a distance you provide. No invented route, timing or street-level claim.</p>
+            <button class="primary acid" type="button" data-route="choices">Try GreenMiles <span>↗</span></button>
+          </article>
+        </section>
+      </section>
+
+      <section class="screen paper-page" id="explore" data-screen="explore"><div class="companion-entry explore-insurance"><span>NEW / CLIMATE INSURANCE</span><strong>Risk is more than a forecast. Understand the coverage questions that matter.</strong><a href="./insurance/">Open Climate Insurance Guide →</a></div>
+        <div class="page-heading">
+          <p class="eyebrow ink">LUNARIS EXPLORE · SOURCE-ATTRIBUTED DISCOVERY</p>
+          <h1>Good for your day.<br><em>Mindful of tomorrow.</em></h1>
+          <p>Explore real Dubai venues with documented practices or official tourism sustainability recognition. We show the evidence—not an invented eco-score. Check opening hours and venue conditions before visiting.</p>
+        </div>
+        <section class="discovery" aria-labelledby="discovery-title">
+          <div class="discovery-top"><div><p class="eyebrow ink">EXPLORE / EVIDENCE FIRST</p><h2 id="discovery-title">Places with a story worth checking.</h2><p>Named venues are real; the evidence is linked. No live hours, inventory, indoor temperature, verified cafe emissions, or formal LUNARIS endorsement is implied.</p></div><div class="discovery-controls"><label for="discover-kind">Explore <select id="discover-kind"><option value="all">All venues</option><option value="cafe">Cafés</option><option value="hotel">Hotels</option></select></label><label for="discover-search">Find a venue <input id="discover-search" type="search" placeholder="Try Marina, Palm, café…"></label></div></div>
+          <div id="discovery-results" class="discovery-grid" aria-live="polite"></div>
+          <p class="discovery-disclaimer">Environmental evidence is a reported practice or a tourism sustainability award, not a comparative carbon footprint. Information may change. Dubai Sustainable Tourism Stamp recognitions shown are from the published 2025 cycle, announced in 2026.</p>
+        </section>
+
+        <p class="eyebrow ink journal-overline">DUBAI JOURNAL · MOODS AND MOMENTS</p>
+        <div class="filter-row" role="group" aria-label="Explore filters">
+          <button class="filter active" data-filter="all">All moods</button>
+          <button class="filter" data-filter="shade">Shade</button>
+          <button class="filter" data-filter="indoor">Indoors</button>
+          <button class="filter" data-filter="night">After dark</button>
+        </div>
+        <div class="journal-layout">
+          <article class="journal-lead" data-moods="shade">
+            <img src="./assets/ghaf-courtyard.png" alt="A shaded stone courtyard with a ghaf tree">
+            <div><span>01 · SHADE STUDY</span><h2>The architecture of a slower morning</h2><p>Editorial concept · venue details pending source review</p></div>
+          </article>
+          <article class="type-feature" data-moods="night">
+            <span>02 · AFTER DARK</span><strong>LATE</strong><h2>Let the city cool before you move.</h2><p>Open HeatShield for sourced conditions before planning outdoor time.</p>
+          </article>
+          <article class="journal-small" data-moods="indoor">
+            <div class="line-art" aria-hidden="true">⌁</div><span>03 · INDOOR CULTURE</span><h2>A quiet hour, held in reserve.</h2><p>Curated category preview</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="screen paper-page" id="heatshield" data-screen="heatshield">
+        <div class="page-heading split-heading">
+          <div><p class="eyebrow ink">HEATSHIELD · FORECAST COMPARISON</p><h1>Choose the hour,<br><em>not the hazard.</em></h1></div>
+          <p>Ranks forecast hours against your personal comfort range. It is not medical advice and never labels a time “safe.”</p>
+        </div>
+        <div class="instrument-panel">
+          <div class="activity-picker" role="group" aria-label="Choose activity">
+            <button class="activity active" data-activity="walk">Walk</button>
+            <button class="activity" data-activity="run">Run</button>
+            <button class="activity" data-activity="cycle">Cycle</button>
+            <button class="activity" data-activity="outdoor">Outdoors</button>
+          </div>
+          <div class="decision-panel" id="heat-decision-panel">
+            <div class="decision-heading"><span class="eyebrow ink">PLAN YOUR ACTIVITY · DECISION ASSISTANT</span><strong>Tell LUNARIS what you're planning.</strong></div>
+            <div class="decision-controls"><label>When <select id="heat-daypart"><option value="any">Any available hour</option><option value="morning">Morning · 5–11</option><option value="afternoon">Afternoon · 12–17</option><option value="evening">Evening · 18–23</option></select></label><label>Duration <select id="heat-duration"><option value="15">15 minutes</option><option value="30" selected>30 minutes</option><option value="60">60 minutes</option><option value="90">90 minutes</option></select></label><label>Setting <select id="heat-exposure"><option value="exposed">Direct sun / exposed</option><option value="shade">Mostly shaded</option><option value="indoor">Indoors / cooled</option></select></label></div>
+            <div id="heat-plan-summary" class="decision-message" aria-live="polite">Load the Dubai forecast to see when to consider your plan and what conditions to watch.</div>
+            <button type="button" id="heat-explore" class="text-link">Find an indoor or shaded alternative in Explore →</button>
+          </div>
+          <div class="source-line"><span class="pulse"></span><span id="heat-source">Waiting for Open-Meteo forecast</span></div>
+          <p id="ai-evaluation" class="model-status" aria-live="polite">AI model evaluation is not yet connected. Live Open-Meteo forecasts remain source-labeled.</p>
+          <div id="heat-windows" class="window-list" aria-live="polite"><div class="empty-line dark">No forecast windows yet.</div></div>
+        </div>
+        <aside class="method-note"><strong>How ranking works</strong><p>Hours closer to your selected comfort range rank higher. Elevated apparent temperature receives a calm caution label. Humidity and forecast uncertainty remain visible; comfort is not physiological safety. Forecast data: <a href="https://open-meteo.com/" target="_blank" rel="noopener noreferrer">Open-Meteo</a> under CC BY 4.0.</p></aside>
+      </section>
+
+      <section class="screen choices-page" id="choices" data-screen="choices"><div class="cop31-tool-stripe" aria-label="New climate decision tools"><a href="./wallet/"><span>◈</span><strong>Carbon &amp; Cost Wallet</strong><small>Money × emissions</small></a><a href="./foodprint-fridge/"><span>♧</span><strong>FoodPrint · Fridge Brain</strong><small>Use what you have</small></a><a href="./home-resilience/"><span>⌂</span><strong>WattFlow · Home Resilience</strong><small>Prepare your home</small></a><a href="./insurance/"><span>◇</span><strong>Climate Insurance Guide</strong><small>Understand coverage</small></a></div>
+        <div class="page-heading dark-heading">
+          <p class="eyebrow">CHOICES · ESTIMATES WITH RECEIPTS</p>
+          <h1>Trade-offs,<br><em>made tangible.</em></h1>
+        </div>
+        <div class="tool-tabs" role="tablist" aria-label="Choice calculators">
+          <button class="tool-tab active" data-tool="travel" role="tab">GreenMiles</button>
+          <button class="tool-tab" data-tool="food" role="tab">FoodPrint</button>
+          <button class="tool-tab" data-tool="energy" role="tab">WattFlow</button>
+        </div>
+        <div class="tool-panel active" id="travel-tool">
+          <div class="tool-copy"><span>01 / TRAVEL</span><h2>A distance in.<br>A clearer choice out.</h2><p>Factor-based comparison only. No route, transit schedule or journey time is inferred.</p></div>
+          <form id="travel-form" class="calculator">
+            <label>Distance <span><input type="number" id="distance" min="0.1" max="500" step="0.1" value="12"> km</span></label>
+            <label>Car occupancy <span><input type="number" id="occupancy" min="1" max="8" step="1" value="1"> people</span></label>
+            <button class="primary acid" type="submit">Compare modes ↗</button>
+          </form>
+          <div id="travel-results" class="comparison-bars"></div>
+          <div class="decision-panel vehicle-planner"><span class="eyebrow ink">YOUR VEHICLE · MORE PERSONAL</span><h3>Compare using your car's real efficiency</h3><p>Choose the powertrain and enter the manufacturer's documented combined-cycle efficiency. The result is an operational estimate, not the vehicle's full lifecycle footprint.</p><form id="vehicle-form" class="calculator"><label>Powertrain <select id="vehicle-fuel"><option value="petrol">Petrol</option><option value="diesel">Diesel</option><option value="ev">Electric</option></select></label><label>Documented efficiency <span><input type="number" min="1" max="40" step="0.1" value="7" id="vehicle-efficiency"> <small id="vehicle-unit">L/100 km</small></span></label><label>Trip distance <span><input type="number" min="0.1" max="500" step="0.1" value="12" id="vehicle-distance"> km</span></label><label>Vehicle name (optional) <input id="vehicle-name" maxlength="70" placeholder="Model and year"></label><label>Compare with another vehicle (same powertrain) <span><input type="number" min="1" max="40" step="0.1" id="vehicle-alt-efficiency" placeholder="Efficiency"> <small id="vehicle-alt-unit">L/100 km</small></span></label><label id="ev-grid-row" hidden>Electricity grid factor (user sourced) <span><input type="number" id="vehicle-grid-factor" min="0" max="2" step="0.001" placeholder="kg CO₂e/kWh"></span></label><label>Passengers <input type="number" min="1" max="8" value="1" id="vehicle-passengers"></label><button type="submit" class="primary acid">Estimate this vehicle ↗</button></form><div class="result-sentence" id="vehicle-result" aria-live="polite">Enter a model's published efficiency to estimate driving emissions.</div><p class="footnote">Uses illustrative fuel CO₂ factors (petrol 2.31 kg/L, diesel 2.68 kg/L). For EVs, provide your electricity-grid factor rather than assuming zero emissions. These estimates omit production, fuel upstream stages and model-specific real-world driving conditions.</p></div>
+          <p class="footnote">Verified against the <a href="https://www.gov.uk/government/publications/greenhouse-gas-reporting-conversion-factors-2026" target="_blank" rel="noopener noreferrer">UK Government 2026 conversion-factor workbook</a>: average fuel-unknown car 0.16591 kg CO₂e/vehicle-km, average local bus 0.10151 kg CO₂e/passenger-km, and London Underground 0.02121 kg CO₂e/passenger-km used as a transparent rail proxy. These are not Dubai fleet factors. Walk/cycle show zero operational emissions here, not zero lifecycle impact.</p>
+        </div>
+        <div class="tool-panel" id="food-tool">
+          <div class="tool-copy"><span>02 / FOOD</span><h2>Compare categories,<br>not people.</h2><p>Lifecycle averages are broad estimates, never a product or restaurant footprint.</p></div>
+          <form id="food-form" class="calculator"><label>Serving mass <span><input id="food-mass" type="number" value="250" min="10" max="2000"> g</span></label><label>Compare <select id="food-a"><option value="beef">Beef (beef herd)</option><option value="poultry">Poultry</option><option value="cheese">Cheese</option><option value="rice">Rice</option><option value="tofu">Tofu</option><option value="peas">Peas</option></select> with <select id="food-b"><option value="peas">Peas</option><option value="tofu">Tofu</option><option value="rice">Rice</option><option value="poultry">Poultry</option><option value="cheese">Cheese</option><option value="beef">Beef (beef herd)</option></select></label><button class="primary acid" type="submit">Estimate ↗</button></form>
+          <div id="food-results" class="result-sentence">Choose two categories to see an attributed comparison.</div>
+          <div class="companion-entry"><span>FOODPRINT · NEW</span><strong>Less food wasted. More value from every ingredient.</strong><a href="./foodprint-fridge/">Open Fridge Brain →</a></div><div class="decision-panel food-products"><span class="eyebrow ink">FOODPRINT / PRODUCT INTELLIGENCE BETA</span><h3>Keep the food. Compare the brands.</h3><p>Find a specific packaged product by barcode, then compare two published product footprints only when they use the same unit and system boundary. We never invent a brand's emissions.</p>
+            <form id="product-lookup" class="calculator"><label>Product barcode <input id="product-barcode" inputmode="numeric" pattern="[0-9]{8,14}" maxlength="14" placeholder="8–14 digit barcode" required></label><button class="primary acid" type="submit">Look up product ↗</button></form><div class="result-sentence" id="product-result" aria-live="polite">Product identity data supplied by Open Food Facts when available. An Eco-Score is not equivalent to a verified product carbon footprint.</div>
+            <h4>Compare two packaged products</h4><p>Barcode identity and ingredients can help identify alternatives. Neither product receives a claimed carbon advantage without comparable footprint evidence.</p>
+            <form id="barcode-pair-form" class="calculator"><label>Barcode A <input id="barcode-a" inputmode="numeric" pattern="[0-9]{8,14}" maxlength="14" placeholder="Product A" required></label><label>Barcode B <input id="barcode-b" inputmode="numeric" pattern="[0-9]{8,14}" maxlength="14" placeholder="Product B" required></label><button type="submit" class="primary acid">Compare product identities ↗</button></form><div id="barcode-pair-results" class="product-pair-results" aria-live="polite">Brand and ingredient information will appear if found. Carbon footprint comparison requires separate source evidence.</div>
+            <h4>Compare two published footprints</h4><form id="product-compare" class="calculator"><label>Product A <input id="brand-a" required maxlength="90" placeholder="Brand and exact product"></label><label>Footprint A <span><input id="footprint-a" type="number" min="0.001" max="500" step="any" required> kg CO₂e/kg</span></label><label>Product B <input id="brand-b" required maxlength="90" placeholder="Brand and exact product"></label><label>Footprint B <span><input id="footprint-b" type="number" min="0.001" max="500" step="any" required> kg CO₂e/kg</span></label><label>Boundary <select id="footprint-boundary"><option value="farm-to-retailer">Farm to retailer / grower to grocer</option><option value="cradle-to-gate">Cradle to factory gate</option><option value="cradle-to-grave">Full lifecycle</option></select></label><label>Published source A <input id="source-a" type="url" required placeholder="https://..." ></label><label>Published source B <input id="source-b" type="url" required placeholder="https://..." ></label><button type="submit" class="primary acid">Compare reported values ↗</button></form><div id="product-comparison" class="result-sentence" aria-live="polite">Both values must describe equivalent product mass and the same declared boundary. These inputs are supplied by you, not independently verified by LUNARIS.</div><p class="footnote">Different dates, origins, packaging, functional units or assessment methods can invalidate comparison even with the same boundary. Check each publication. <a href="https://www.oatly.com/oatly-who/sustainability-plan/climate-footprint-product-label" target="_blank" rel="noopener noreferrer">Example of a manufacturer publishing methodology (Oatly)</a> · <a href="https://world.openfoodfacts.org/" target="_blank" rel="noopener noreferrer">Open Food Facts</a>.</p>
+          </div>
+          <p class="footnote">Global lifecycle averages in kg CO₂e per kg of food from <a href="https://ourworldindata.org/grapher/ghg-per-kg-poore" target="_blank" rel="noopener noreferrer">Our World in Data’s Poore &amp; Nemecek (2018) dataset</a>. Values include land-use change, farm, feed, processing, transport, retail and packaging; production varies widely.</p>
+        </div>
+        <div class="tool-panel" id="energy-tool">
+          <div class="tool-copy"><span>03 / ENERGY</span><h2>Your monthly use.<br>The current tariff.</h2><p>A transparent DEWA residential electricity estimate using published slab rates, the November 2026 fuel surcharge and VAT.</p></div>
+          <form id="energy-form" class="calculator"><label>Monthly electricity use <span><input id="monthly-kwh" type="number" value="2500" min="0" max="100000" step="1"> kWh</span></label><button class="primary acid" type="submit">Estimate DEWA charge ↗</button></form>
+          <div id="energy-results" class="result-sentence">Enter monthly kWh to estimate the electricity component of a DEWA bill.</div>
+          <div class="decision-panel"><span class="eyebrow ink">WATTFLOW / WHAT-IF PLANNER</span><h3>What if you used less electricity?</h3><form id="energy-scenario-form" class="calculator"><label>Monthly reduction target <span><input type="number" id="energy-reduction" value="10" min="1" max="60" step="1"> %</span></label><button class="primary acid" type="submit">Calculate potential savings ↗</button></form><div id="energy-savings" class="result-sentence" aria-live="polite">Estimate a reduction against your entered monthly usage. It does not infer how you would achieve it.</div></div>
+          <div class="companion-entry"><span>WATTFLOW · NEW</span><strong>Energy efficiency meets household climate resilience.</strong><a href="./home-resilience/">Open Home Resilience Checklist →</a></div><div class="decision-panel appliance-planner"><span class="eyebrow ink">WATTFLOW / APPLIANCE SCENARIO</span><h3>Where could the electricity go?</h3><p>Enter appliance wattage and usage hours to estimate consumption and the potential bill effect of changing a habit. Wattage is user-provided: not a smart meter measurement.</p><form id="appliance-form" class="calculator"><label>Appliance <select id="appliance-kind"><option value="aircon">Air conditioning</option><option value="lighting">Lighting</option><option value="fan">Fan</option><option value="computer">Computer</option><option value="custom">Other appliance</option></select></label><label>Measured/rated power <span><input id="appliance-watts" type="number" min="1" max="15000" step="1" value="1200"> W</span></label><label>Units <input id="appliance-count" type="number" min="1" max="30" step="1" value="1"></label><label>Hours used per day <span><input id="appliance-hours" type="number" min="0" max="24" step="0.25" value="6"> h</span></label><label>Hours after change <span><input id="appliance-new-hours" type="number" min="0" max="24" step="0.25" value="4"> h</span></label><button class="primary acid" type="submit">Model this change ↗</button></form><div id="appliance-results" class="result-sentence" aria-live="polite">Estimate energy use and marginal tariff savings. Variable-speed AC and actual duty cycles can differ substantially from rated input.</div></div>
+          <p class="footnote"><a href="https://www.dewa.gov.ae/en/consumer/billing/slab-tariff" target="_blank" rel="noopener noreferrer">Official DEWA residential electricity slabs</a>: AED 0.23, 0.28, 0.32 and 0.38 per kWh; November 2026 fuel surcharge AED 0.06/kWh; 5% VAT. Meter charges, housing fees, water, sewerage and other line items are excluded.</p>
+        </div>
+      </section>
+
+      <section class="screen action-page" id="action" data-screen="action">
+        <div class="action-hero"><img src="./assets/community-action.png" alt="Volunteers preparing native seedlings at an outdoor worktable"><div class="action-copy"><span class="status-tag">OFFICIAL ROUTES · LIVE LINKS</span><h1>A better city<br>begins with<br><em>showing up.</em></h1></div></div>
+        <div class="atlas-feature-shortcut"><span class="eyebrow">THE MAIN EVENT · DUBAI CITY INTELLIGENCE</span><h2>See the city. <em>Spot possibility.</em></h2><p>Open the interactive Atlas: 12 area-level investigation concepts spanning heat, greenery, biodiversity, water, solar and waste. Examine interventions, explore hypothetical impact and register interest. Satellite evidence has not yet validated specific sites.</p><a class="primary acid" href="./action-atlas/">Enter the City Opportunity Atlas ↗</a></div>
+        <div class="mission-body">
+          <div><p class="eyebrow ink">VOLUNTEERING · UNITED ARAB EMIRATES</p><h2>Explore Dubai’s improvement potential</h2><p>Explore area-level urban cooling, greenery, biodiversity, water, energy and waste concepts in the new City Opportunity Atlas. All mapped concepts require satellite assessment, local surveys and approvals. Real volunteering routes are separately linked below.</p></div>
+          <dl class="evidence-ledger"><div><dt>Opportunities</dt><dd>Provider-managed</dd></div><div><dt>Registration</dt><dd>On official platform</dd></div><div><dt>LUNARIS tracking</dt><dd>None</dd></div></dl>
+          <div class="official-actions"><a class="primary ink-button" href="./action-atlas/">Open Dubai Opportunity Atlas ↗</a><a class="primary ink-button official-link" data-action-link href="https://volunteers.ae/en" target="_blank" rel="noopener noreferrer">Browse Volunteers.ae ↗</a><a class="text-link official-link" data-action-link href="https://www.dubai.ae/living/society-welfare/volunteering" target="_blank" rel="noopener noreferrer">Read Dubai’s volunteering guide →</a><p id="interest-message" role="status">External links open the official provider. Availability and eligibility are determined there.</p></div>
+        </div>
+      </section>
+
+      <section class="screen impact-page" id="impact" data-screen="impact">
+        <div class="page-heading"><p class="eyebrow ink">IMPACT · A QUIET LEDGER</p><h1>No score.<br><em>Just a record.</em></h1><p>Factor-based estimates and official-route visits stay clearly labeled. They are never collapsed into a fictional goodness number.</p></div>
+        <div class="ledger-tabs"><div><strong id="estimate-count">0</strong><span>Estimated</span></div><div><strong id="self-count">0</strong><span>Official routes</span></div><div><strong>0</strong><span>Verified outcomes</span></div></div>
+        <div id="impact-list" class="impact-list"><div class="empty-ledger"><span>✦</span><h2>Your ledger is open.</h2><p>Run a sourced comparison to keep a private, browser-only record here.</p></div></div>
+        <div class="privacy-controls" style="max-width:760px;margin:2rem auto 1rem;padding:1.5rem 0;border-top:1px solid currentColor">
+          <p class="eyebrow ink">YOUR DATA / YOUR CONTROL</p>
+          <p>Your activity ledger is stored in this browser. If an API is available, preferences and conceptual mission interest may also be associated with a temporary guest session. You can erase both here.</p>
+          <button id="delete-my-data" type="button" class="primary ink-button">Erase my LUNARIS data</button>
+          <p id="delete-status" role="status" aria-live="polite"></p>
+        </div>
+      </section>
+    </main>
+
+    <nav class="dock" aria-label="Primary navigation">
+      <button class="dock-item active" data-route="home"><span>⌂</span>Today</button>
+      <button class="dock-item" data-route="explore"><span>◫</span>Explore</button>
+      <button class="dock-item dock-primary" data-route="heatshield"><span>☼</span>HeatShield</button>
+      <button class="dock-item" data-route="choices"><span>↔</span>Choices</button>
+      <a class="dock-item dock-action" href="./action-atlas/" aria-label="Open LUNARIS Action City Opportunity Atlas"><span>♧</span>Action</a>
+      <a class="dock-item dock-wallet" href="./wallet/" aria-label="Open Carbon and Cost Wallet"><span>◈</span>Wallet</a>
+      <button class="dock-item" data-route="impact"><span>◎</span>Impact</button>
+      <button class="dock-item dock-lumi" id="dock-lumi" type="button" aria-label="Open Lumi chat"><span>✦</span>Lumi</button>
+    </nav>
+  </div>
+
+  <dialog id="onboarding" class="onboarding">
+    <form method="dialog" id="preferences-form">
+      <button class="dialog-close" value="cancel" aria-label="Close preferences">×</button>
+      <p class="eyebrow ink">MAKE THE CITY YOURS</p>
+      <h2>What weather<br><em>feels like you?</em></h2>
+      <p class="dialog-intro">Preferences shape recommendations; they are not medical thresholds.</p>
+      <fieldset><legend>Choose your moods</legend><div class="mood-grid"><label><input type="checkbox" name="mood" value="rainy_cozy"><span>Rainy<br><small>soft &amp; rare</small></span></label><label><input type="checkbox" name="mood" value="cloudy_moody"><span>Cloudy<br><small>quiet &amp; cool</small></span></label><label><input type="checkbox" name="mood" value="sunny"><span>Sunny<br><small>bright energy</small></span></label><label><input type="checkbox" name="mood" value="after_dark"><span>After dark<br><small>city glow</small></span></label></div></fieldset>
+      <fieldset><legend>Your comfortable air temperature</legend><div class="range-pair"><label>From <input id="comfort-min" type="number" min="10" max="45" value="19"> °C</label><label>To <input id="comfort-max" type="number" min="10" max="50" value="29"> °C</label></div></fieldset>
+      <button class="primary ink-button full" value="default" type="submit">Enter LUNARIS →</button>
+      <p class="storage-note">Saved in this browser; optionally synced to a temporary guest session when the backend is available. No verified account or precise location required.</p>
+    </form>
+  </dialog>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="./config.js"></script>
+  <script src="./app.js"></script>
+  <script src="/assets/lunaris-tour-launcher.js" defer></script>
+</body>
+</html>

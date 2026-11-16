@@ -1,0 +1,50 @@
+# Single-origin LUNARIS demo deployment. Requires an external HTTPS reverse proxy / platform TLS.
+# Set secrets using a private .env.release file. Never commit real credentials.
+services:
+  db:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: lunaris
+      POSTGRES_DB: lunaris
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Configure POSTGRES_PASSWORD}
+    volumes:
+      - lunaris_pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U lunaris -d lunaris"]
+      interval: 5s
+      timeout: 3s
+      retries: 15
+  api:
+    build:
+      context: ./services/api
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    depends_on:
+      db: {condition: service_healthy}
+    environment:
+      LUNARIS_ENV: production
+      LUNARIS_DATABASE_URL: postgresql://lunaris:${POSTGRES_PASSWORD}@db:5432/lunaris
+      LUNARIS_SESSION_SECRET: ${LUNARIS_SESSION_SECRET:?Configure long session secret}
+      LUNARIS_CORS_ALLOW_ORIGINS: ${PUBLIC_ORIGIN:?Configure HTTPS public origin}
+      LUNARIS_AUTO_CREATE_SCHEMA: "false"
+      LUNARIS_SEED_DEMO_DATA: "true"
+      LUNARIS_DOCS_ENABLED: "false"
+      LUNARIS_WEATHER_PROVIDER: lunaris_api.integrations.builtin:OpenMeteoWeatherProvider
+      LUNARIS_CLIMATE_ENGINE: lunaris_api.integrations.builtin:ComfortWindowEngine
+      LUNARIS_CHOICES_ENGINE: lunaris_api.integrations.builtin:VerifiedChoicesEngine
+      LUNARIS_MODEL_DIR: /var/lunaris/models
+      LUNARIS_ATLAS_EVIDENCE_FILE: /var/lunaris/evidence/dubai_area_indicators.json
+    volumes:
+      - ./deploy/models:/var/lunaris/models:ro
+      - ./deploy/evidence:/var/lunaris/evidence:ro
+    expose: ["8000"]
+  web:
+    build:
+      context: .
+      dockerfile: deploy/Dockerfile.web
+    restart: unless-stopped
+    depends_on: [api]
+    ports: ["${LUNARIS_HTTP_PORT:-8080}:8080"]
+volumes:
+  lunaris_pgdata:

@@ -1,0 +1,51 @@
+{
+  "meta": {
+    "snapshot_recorded_at": "2026-11-15T00:00:00Z",
+    "verification_status": "verified",
+    "verified_at": "2026-11-15T22:36:18Z",
+    "verified_by": "Codex integration audit",
+    "note": "Food values matched row-for-row against the archived OWID CSV. Travel values were replaced with exact rows from the revised UK Government 2026 flat file. Source snapshots and SHA-256 hashes are stored under data/source_cache. UK travel values remain a jurisdiction proxy for UAE use."
+  },
+  "travel": {
+    "jurisdiction": "GB",
+    "source_name": "UK DESNZ/DEFRA Government GHG conversion factors for company reporting",
+    "source_url": "https://www.gov.uk/government/collections/government-conversion-factors-for-company-reporting",
+    "year": 2026,
+    "boundary": "Operational or business-travel factors from the official 2026 flat file; excludes vehicle/infrastructure lifecycle and is not specific to Dubai fleets.",
+    "modes": {
+      "car":        {"basis": "vehicle",   "unit": "kg CO2e per vehicle-km",   "low": 0.14282,  "central": 0.16591,  "high": 0.22770,  "range_basis": "2026 small / average / large car, fuel unknown rows", "max_occupancy": 9},
+      "motorbike":  {"basis": "vehicle",   "unit": "kg CO2e per vehicle-km",   "low": 0.08319, "central": 0.11367, "high": 0.13252, "range_basis": "2026 small / average / large motorbike rows", "max_occupancy": 2},
+      "bus":        {"basis": "passenger", "unit": "kg CO2e per passenger-km", "low": 0.06360, "central": 0.10151, "high": 0.12552, "range_basis": "2026 London / average / non-London local bus rows; UK average loadings"},
+      "metro_rail": {"basis": "passenger", "unit": "kg CO2e per passenger-km", "low": 0.01549, "central": 0.02121, "high": 0.03092, "range_basis": "2026 London Underground / light rail and tram / national rail rows; proxy only"},
+      "walk":       {"basis": "none", "unit": "kg CO2e per km", "low": 0.0, "central": 0.0, "high": 0.0, "range_basis": "operational only", "lifecycle_note": "Operational emissions are zero; lifecycle (food energy, footwear, infrastructure) is not zero and is not estimated here."},
+      "bicycle":    {"basis": "none", "unit": "kg CO2e per km", "low": 0.0, "central": 0.0, "high": 0.0, "range_basis": "operational only", "lifecycle_note": "Operational emissions are zero; manufacturing and maintenance lifecycle is not zero and is not estimated here."},
+      "electric_car": {"basis": "user_energy", "unit": "kg CO2e per vehicle-km = kWh/km x grid kg CO2e/kWh (both user-supplied)", "max_occupancy": 9}
+    }
+  },
+  "food": {
+    "source_name": "Our World in Data, 'Environmental impacts of food' (data from Poore & Nemecek 2018, Science)",
+    "source_url": "https://ourworldindata.org/environmental-impacts-of-food",
+    "year": 2018,
+    "unit": "kg CO2e per kg of product",
+    "boundary": "Farm-to-retail life-cycle (land use change, farm, processing, transport, packaging, retail). Excludes consumer transport, storage and cooking. Global production-weighted averages.",
+    "uncertainty": "Producer-level variation within a category is very large (published ranges span multiples of the mean). Ranges are not encoded in this release; see the source.",
+    "categories": {
+      "beef_beef_herd": {"label": "Beef (beef herd)", "factor": 99.48},
+      "beef_dairy_herd": {"label": "Beef (dairy herd)", "factor": 33.3},
+      "lamb_mutton": {"label": "Lamb & mutton", "factor": 39.72},
+      "pork": {"label": "Pig meat", "factor": 12.31},
+      "poultry": {"label": "Poultry meat", "factor": 9.87},
+      "fish_farmed": {"label": "Farmed fish", "factor": 13.63},
+      "eggs": {"label": "Eggs", "factor": 4.67},
+      "cheese": {"label": "Cheese", "factor": 23.88},
+      "milk": {"label": "Milk", "factor": 3.15},
+      "rice": {"label": "Rice", "factor": 4.45},
+      "wheat_bread": {"label": "Wheat & rye (bread)", "factor": 1.57},
+      "tofu": {"label": "Tofu (soybeans)", "factor": 3.16},
+      "peas": {"label": "Peas", "factor": 0.98},
+      "tomatoes": {"label": "Tomatoes", "factor": 2.09},
+      "potatoes": {"label": "Potatoes", "factor": 0.46},
+      "nuts": {"label": "Nuts", "factor": 0.43}
+    }
+  }
+}

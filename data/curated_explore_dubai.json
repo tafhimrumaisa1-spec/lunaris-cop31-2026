@@ -1,0 +1,96 @@
+{
+  "as_of": "2026-11-15",
+  "notes": "Small editorial dataset for client-only Explore. Claims are sourced; no live opening hours/rating/green score.",
+  "venues": [
+    {
+      "name": "Spill the Bean",
+      "type": "cafe",
+      "area": "The Sustainable City",
+      "evidence": "Visit Dubai describes reusable cup incentives, recycling and food-waste practices.",
+      "source": "https://www.visitdubai.com/en/restaurants/spill-the-bean",
+      "sourceLabel": "Visit Dubai venue profile",
+      "note": "Practice described in official tourism editorial; current operations need confirmation.",
+      "terms": [
+        "cafe",
+        "indoors",
+        "coffee",
+        "plant-based"
+      ]
+    },
+    {
+      "name": "Atlantis, The Palm",
+      "type": "hotel",
+      "area": "Palm Jumeirah",
+      "evidence": "Listed in the Dubai Sustainable Tourism Stamp Gold tier (2025 cycle).",
+      "source": "https://www.dubaidet.gov.ae/en/about-det/initiatives/dubai-sustainable-tourism/dubai-sustainable-tourism-stamp",
+      "sourceLabel": "Dubai DET award list",
+      "note": "The stamp is a hotel-level recognition, not a meal or per-stay carbon score.",
+      "terms": [
+        "hotel",
+        "indoor",
+        "palm",
+        "gold"
+      ]
+    },
+    {
+      "name": "DoubleTree by Hilton Dubai \u2013 Business Bay",
+      "type": "hotel",
+      "area": "Business Bay",
+      "evidence": "Listed in the Dubai Sustainable Tourism Stamp Gold tier (2025 cycle).",
+      "source": "https://www.dubaidet.gov.ae/en/about-det/initiatives/dubai-sustainable-tourism/dubai-sustainable-tourism-stamp",
+      "sourceLabel": "Dubai DET award list",
+      "note": "No claim about specific facilities, operating hours or footprint.",
+      "terms": [
+        "hotel",
+        "indoor",
+        "business bay",
+        "gold"
+      ]
+    },
+    {
+      "name": "25Hours Hotel Dubai One Central",
+      "type": "hotel",
+      "area": "One Central / Trade Centre",
+      "evidence": "Listed in the Dubai Sustainable Tourism Stamp Silver tier (2025 cycle).",
+      "source": "https://www.dubaidet.gov.ae/en/about-det/initiatives/dubai-sustainable-tourism/dubai-sustainable-tourism-stamp/dst-stamp-silver-tier",
+      "sourceLabel": "Dubai DET Silver tier list",
+      "note": "Check current recognition and facilities directly before visiting.",
+      "terms": [
+        "hotel",
+        "indoor",
+        "trade centre",
+        "silver"
+      ]
+    },
+    {
+      "name": "Crowne Plaza Dubai Marina",
+      "type": "hotel",
+      "area": "Dubai Marina",
+      "evidence": "Listed in the Dubai Sustainable Tourism Stamp Silver tier (2025 cycle).",
+      "source": "https://www.dubaidet.gov.ae/en/about-det/initiatives/dubai-sustainable-tourism/dubai-sustainable-tourism-stamp/dst-stamp-silver-tier",
+      "sourceLabel": "Dubai DET Silver tier list",
+      "note": "Recognition does not establish lower emissions than other Dubai hotels.",
+      "terms": [
+        "hotel",
+        "indoor",
+        "marina",
+        "silver"
+      ]
+    },
+    {
+      "name": "Address Dubai Mall",
+      "type": "hotel",
+      "area": "Downtown Dubai",
+      "evidence": "Listed in the Dubai Sustainable Tourism Stamp Silver tier (2025 cycle).",
+      "source": "https://www.dubaidet.gov.ae/en/about-det/initiatives/dubai-sustainable-tourism/dubai-sustainable-tourism-stamp/dst-stamp-silver-tier",
+      "sourceLabel": "Dubai DET Silver tier list",
+      "note": "This is a sourced hospitality listing, not an endorsement.",
+      "terms": [
+        "hotel",
+        "indoor",
+        "downtown",
+        "silver"
+      ]
+    }
+  ]
+}

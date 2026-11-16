@@ -1,0 +1,77 @@
+{
+  "meta": {
+    "version": "0.1.0",
+    "scope": "target contracts; not implemented"
+  },
+  "City": {
+    "id": "string",
+    "name": "string",
+    "country_code": "string",
+    "timezone": "IANA string",
+    "support_status": "supported|preview|unsupported",
+    "center_lat": "number",
+    "center_lon": "number"
+  },
+  "UserPreferences": {
+    "user_id": "string|null",
+    "city_id": "string",
+    "weather_moods": "string[]",
+    "comfort_min_c": "number",
+    "comfort_max_c": "number",
+    "activities": "string[]",
+    "priorities": "string[]",
+    "notification_consent": "boolean"
+  },
+  "Evidence": {
+    "source_name": "string",
+    "source_url": "string|null",
+    "retrieved_at": "ISO8601",
+    "valid_at": "ISO8601|null",
+    "data_status": "live|historical|modeled|demo|self_reported|verified",
+    "method": "string",
+    "limitations": "string[]"
+  },
+  "HourConditions": {
+    "timestamp": "ISO8601",
+    "temperature_c": "number|null",
+    "apparent_temperature_c": "number|null",
+    "humidity_percent": "number|null",
+    "precip_probability_percent": "number|null",
+    "weather_code": "number|null",
+    "is_day": "boolean|null",
+    "evidence": "Evidence"
+  },
+  "ActivityWindow": {
+    "start": "ISO8601",
+    "end": "ISO8601",
+    "comfort_rank": "number",
+    "heat_caution": "low|moderate|elevated|unknown",
+    "reason_codes": "string[]",
+    "evidence": "Evidence"
+  },
+  "ChoiceComparison": {
+    "choice_id": "string",
+    "comparison_type": "travel|food|energy|business",
+    "alternatives": "object[]",
+    "estimated_impacts": "object[]",
+    "assumptions": "string[]",
+    "evidence": "Evidence[]"
+  },
+  "CommunityMission": {
+    "id": "string",
+    "title": "string",
+    "city_id": "string",
+    "status": "demo|proposed|reviewing|approved|active|complete",
+    "permission_status": "unknown|pending|approved",
+    "verification_status": "unverified|self_reported|reviewed|verified",
+    "organizer_id": "string|null"
+  },
+  "ImpactRecord": {
+    "id": "string",
+    "user_id": "string",
+    "action_type": "string",
+    "verification_status": "self_reported|reviewed|verified",
+    "impact_estimate": "object|null",
+    "evidence": "Evidence[]"
+  }
+}

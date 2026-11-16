@@ -1,0 +1,70 @@
+openapi: 3.1.0
+info:
+  title: LUNARIS v1 API (target contract)
+  version: 0.1.0
+servers:
+  - url: http://localhost:8000
+paths:
+  /health:
+    get:
+      summary: service health
+      responses: { '200': { description: OK } }
+  /v1/cities:
+    get:
+      summary: supported city registry
+      responses: { '200': { description: city data and statuses } }
+  /v1/preferences:
+    get:
+      summary: current persisted or session preferences
+      responses: { '200': { description: preferences } }
+    put:
+      summary: validate and save preferences
+      requestBody: { required: true, content: { application/json: { schema: { type: object } } } }
+      responses: { '200': { description: saved } }
+  /v1/weather/dubai:
+    get:
+      summary: source-aware Dubai forecast
+      responses: { '200': { description: hourly conditions plus provenance }, '503': { description: upstream unavailable } }
+  /v1/heatshield/windows:
+    post:
+      summary: personalized non-medical activity window comparison
+      requestBody: { required: true, content: { application/json: { schema: { type: object } } } }
+      responses: { '200': { description: ranked windows with caveats } }
+  /v1/choices/travel:
+    post:
+      summary: compare user-defined mode and distance, no invented routing
+      requestBody: { required: true, content: { application/json: { schema: { type: object } } } }
+      responses: { '200': { description: modelled emissions + assumptions } }
+  /v1/choices/food:
+    post:
+      summary: compare documented food category factors
+      requestBody: { required: true, content: { application/json: { schema: { type: object } } } }
+      responses: { '200': { description: sourced category estimates } }
+  /v1/choices/energy:
+    post:
+      summary: appliance scenario cost/energy with user assumption
+      requestBody: { required: true, content: { application/json: { schema: { type: object } } } }
+      responses: { '200': { description: calculated consumption, assumed tariff } }
+  /v1/places:
+    get:
+      summary: curated or sourced Dubai place records, status per item
+      responses: { '200': { description: places, evidence } }
+  /v1/business-evidence/{id}:
+    get:
+      summary: business environmental claims and their review status
+      parameters: [{ name: id, in: path, required: true, schema: { type: string } }]
+      responses: { '200': { description: evidence profile } }
+  /v1/missions:
+    get:
+      summary: Dubai missions with explicit demo/approval status
+      responses: { '200': { description: mission list } }
+  /v1/missions/{id}/interest:
+    post:
+      summary: express interest, consent and abuse-safe
+      parameters: [{ name: id, in: path, required: true, schema: { type: string } }]
+      requestBody: { required: true, content: { application/json: { schema: { type: object } } } }
+      responses: { '201': { description: stored interest, no false registration success } }
+  /v1/impact:
+    get:
+      summary: personal log, verification separate from estimates
+      responses: { '200': { description: impact record list } }

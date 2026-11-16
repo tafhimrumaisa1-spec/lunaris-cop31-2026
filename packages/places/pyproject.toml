@@ -1,0 +1,14 @@
+[project]
+name = "lunaris-places"
+version = "0.1.0"
+requires-python = ">=3.11"
+dependencies = ["lunaris-choices"]
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+[tool.setuptools.packages.find]
+where = ["src"]
+[tool.setuptools.package-data]
+lunaris_places = ["data/*.json"]
+[tool.pytest.ini_options]
+pythonpath = ["src", "../choices/src"]

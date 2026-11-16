@@ -1,0 +1,8 @@
+-r requirements.txt
+pytest>=8,<9
+httpx>=0.27,<1
+PyYAML>=6,<7
+-e ../../packages/contracts
+-e ../../packages/choices
+-e ../../packages/places
+-e .
