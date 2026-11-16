@@ -1,0 +1,41 @@
+LUNARIS
+Copyright 2026 LUNARIS contributors
+
+The source code in this repository is licensed under the Apache License,
+Version 2.0, except where a file or directory states otherwise.
+
+The LUNARIS name, logo, Lumi character, photographs, illustrations,
+editorial copy, and other visual identity assets are not granted under the
+Apache License. See BRAND.md.
+
+Third-party services and data
+-----------------------------
+
+Open-Meteo API data is provided under Creative Commons Attribution 4.0
+International (CC BY 4.0). LUNARIS labels Open-Meteo as the forecast source.
+https://open-meteo.com/en/license
+
+OpenStreetMap data is made available under the Open Data Commons Open
+Database License (ODbL) by the OpenStreetMap Foundation. Interactive maps
+display "© OpenStreetMap contributors" and link to the copyright page.
+https://www.openstreetmap.org/copyright
+
+Open Food Facts database data is available under the Open Database License
+(ODbL); individual database contents are available under the Database
+Contents License. LUNARIS links product records to Open Food Facts and does
+not bundle a copy of its product database.
+https://openfoodfacts.github.io/openfoodfacts-server/api/
+
+Leaflet is loaded for the Action Atlas map and is licensed under the BSD
+2-Clause License. Copyright (c) 2010-2026, Volodymyr Agafonkin, and
+Copyright (c) 2010-2011, CloudMade.
+https://github.com/Leaflet/Leaflet/blob/main/LICENSE
+
+DM Sans and Instrument Serif are loaded through Google Fonts. Both typefaces
+are licensed under the SIL Open Font License 1.1.
+https://github.com/google/fonts/tree/main/ofl/dmsans
+https://github.com/google/fonts/tree/main/ofl/instrumentserif
+
+Third-party libraries installed through package managers retain their own
+licenses and copyright notices. The Apache License for LUNARIS does not
+replace or modify those licenses.

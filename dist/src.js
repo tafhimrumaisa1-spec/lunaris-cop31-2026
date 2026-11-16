@@ -66,3 +66,6 @@ const observer = new IntersectionObserver(entries => entries.forEach(entry => {
   if (entry.isIntersecting) { entry.target.classList.add('in-view'); observer.unobserve(entry.target); }
 }), {threshold:.11});
 document.querySelectorAll('.manifesto-inner,.section-heading,.tile,.journey-intro .container,.interlude-wrap,.global-copy,.final-inner').forEach(el => {el.classList.add('reveal');observer.observe(el)});
+// Release copy: Lumi now uses a secure server-side Groq endpoint when configured.
+const lumiFeatureCopy = document.querySelector('.next-feature[href="/app/#home"] p');
+if (lumiFeatureCopy) lumiFeatureCopy.textContent = 'The environmental assistant uses secure server-side Groq conversations and allowlisted evidence tools, with a bounded local fallback when unavailable.';

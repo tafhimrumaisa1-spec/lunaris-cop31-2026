@@ -31,3 +31,13 @@ This is an implementation-ready source archive, not a live website. The automate
 ## Next actions
 
 Use `python scripts/preflight.py`, then read `deploy/README.md`. This handoff does not include credentials or any live deployment URL.
+# COP31 v8 final production release
+
+- Preserved the supplied ten-step `/tour/` walkthrough and all COP31 routes.
+- Added secure server-side Groq conversation for Lumi with an explicit
+  read-only tool allowlist and a bounded, clearly labelled local fallback.
+- Added the validated NASA POWER 2024–2025 Dubai snapshot: 731 complete days,
+  zero missing days, and transparent previous-day/prior-year baseline errors.
+- Fixed the HeatShield exposure-setting regression inherited from the package.
+- Added an independent Vercel configuration; the frozen Veritas repository and
+  deployment are not connected to this release.
