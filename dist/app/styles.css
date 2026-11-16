@@ -347,7 +347,19 @@ em { font-family: var(--serif); font-weight: 400; }
 .lumi-assistant-top { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 10px; }
 .lumi-assistant-top strong { font-size: 20px; }
 .lumi-assistant-top span { color: var(--muted); font-size: 11px; }
+.lumi-clear { border: 0; border-bottom: 1px solid var(--ink); background: transparent; padding: 5px 0; font: inherit; font-size: 11px; font-weight: 750; cursor: pointer; }
 .lumi-helper { font-size: 13px; line-height: 1.6; color: var(--muted); margin: 12px 0; }
+.lumi-messages { display: grid; gap: 9px; max-height: 360px; overflow: auto; overscroll-behavior: contain; padding: 4px 7px 4px 0; scroll-behavior: smooth; }
+.lumi-message { width: min(88%, 610px); padding: 14px 16px; border: 1px solid var(--hairline); border-radius: 16px 16px 16px 4px; background: rgba(255,255,255,.56); }
+.lumi-message.user { justify-self: end; border-radius: 16px 16px 4px 16px; background: var(--ink); color: var(--paper); }
+.lumi-message.fallback { border-left: 3px solid #6b8d45; }
+.lumi-message.loading { opacity: .64; animation: lumi-pulse 1.15s ease-in-out infinite alternate; }
+.lumi-message strong { display: block; margin-bottom: 5px; font-size: 11px; letter-spacing: .06em; text-transform: uppercase; }
+.lumi-message p { margin: 0; font-size: 13px; line-height: 1.6; white-space: pre-wrap; }
+.lumi-sources { margin-top: 9px; font-size: 10px; line-height: 1.5; color: var(--muted); }
+.lumi-sources a, .lumi-message-links a { color: inherit; text-underline-offset: 3px; }
+.lumi-message-links { display: flex; flex-wrap: wrap; gap: 8px 14px; margin-top: 10px; font-size: 11px; font-weight: 750; }
+@keyframes lumi-pulse { to { opacity: 1; } }
 .lumi-quick-asks { display: flex; flex-wrap: wrap; gap: 7px; margin: 17px 0; }
 .lumi-quick-asks button { font-size: 12px; border-radius: 999px; border: 1px solid var(--hairline); background: transparent; padding: 9px 13px; cursor: pointer; }
 .lumi-quick-asks button:hover { border-color: var(--ink); }
@@ -355,13 +367,19 @@ em { font-family: var(--serif); font-weight: 400; }
 .lumi-input-row { display: flex; border: 1px solid var(--ink); border-radius: 8px; overflow: hidden; min-height: 49px; }
 .lumi-input-row input { flex: 1; min-width: 0; padding: 12px; border: 0; outline-offset: -4px; background: var(--paper); }
 .lumi-input-row button { padding: 0 21px; border: 0; background: var(--ink); color: var(--paper); font-weight: 700; }
+.lumi-input-row button:disabled, .lumi-input-row input:disabled { opacity: .62; cursor: wait; }
+.lumi-status { min-height: 18px; margin-top: 9px; color: var(--muted); font-size: 10px; }
+.lumi-retry { margin-top: 6px; border: 1px solid var(--ink); border-radius: 999px; background: transparent; padding: 8px 12px; font: inherit; font-size: 11px; font-weight: 750; cursor: pointer; }
+.lumi-links { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 14px; }
+.lumi-links button, .lumi-links a { border: 1px solid var(--hairline); border-radius: 999px; background: transparent; color: var(--ink); padding: 8px 11px; font: inherit; font-size: 10px; font-weight: 750; text-decoration: none; cursor: pointer; }
+.lumi-privacy { margin-top: 13px !important; max-width: 680px; font-size: 10px !important; line-height: 1.55 !important; }
 .lumi-answer { margin-top: 14px; padding: 17px; border-left: 3px solid #6b8d45; background: rgba(255,255,255,.52); }
 .lumi-answer strong { display: block; margin-bottom: 5px; }
 .lumi-answer p { margin: 0; font-size: 13px; line-height: 1.65; }
 .lumi-answer a { display: inline-block; margin-top: 12px; color: var(--ink); font-weight: 750; text-underline-offset: 3px; }
-@media(max-width:650px) { .dock { gap: 0; } .dock-item { font-size: 9px; min-width: 0; } .dock-action { border-radius: 99px; } .lumi-input-row button { padding: 0 13px; } }
+@media(max-width:650px) { .dock { gap: 0; } .dock-item { font-size: 9px; min-width: 0; } .dock-action { border-radius: 99px; } .lumi-input-row button { padding: 0 13px; } .lumi-message { width: 94%; } .lumi-messages { max-height: 420px; } }
 
-/* Lumi's permanent bottom-nav entry opens the existing chat without requiring an API key. */
+/* Lumi's permanent dock entry opens the chat; credentials stay server-side. */
 .dock-lumi { color: var(--acid); border: 1px solid rgba(179,242,93,.42); }
 .dock-lumi:hover, .dock-lumi:focus-visible { background: var(--acid); color: var(--ink); }
 @media(max-width:650px) { .dock-item { font-size: 8px; } .dock-primary { min-width: 62px; } .dock { padding: 4px; } }

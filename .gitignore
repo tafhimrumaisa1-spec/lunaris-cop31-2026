@@ -1,4 +1,9 @@
 .venv/
+.vercel/
+.env
+.env.*
+!.env.example
+!.env.*.example
 .chrome-*/
 __pycache__/
 *.py[cod]
@@ -8,5 +13,9 @@ __pycache__/
 preview-*.png
 homepage-*.png
 *-qa.png
+*.pem
+*.key
+*.p12
+*.pfx
 .DS_Store
 

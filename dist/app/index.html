@@ -59,12 +59,18 @@
             <h2 id="lumi-title">Small steps.<br><em>Clear receipts.</em></h2>
             <p id="lumi-message">I’ll help you read the forecast, compare a choice, and find an official route into local action. No points for pretending.</p>
             <div class="lumi-trail" id="lumi-trail" aria-label="LUNARIS progress"></div>
-            <div class="lumi-assistant" id="lumi-assistant" aria-label="Ask Lumi climate guide">
-              <div class="lumi-assistant-top"><strong>Ask Lumi</strong><span>Evidence-aware beta · no AI key needed</span></div>
-              <p class="lumi-helper">Ask about your forecast, when to go outside, climate choices, or city action. Lumi uses known app information, not a generative AI model.</p>
-              <div class="lumi-quick-asks" role="group" aria-label="Suggested questions"><button type="button" data-lumi-ask="What is the weather in Dubai?">Dubai weather</button><button type="button" data-lumi-ask="When should I go outside?">Plan outside</button><button type="button" data-lumi-ask="How can I help improve Dubai?">Improve my city</button><button type="button" data-lumi-ask="How can I save electricity?">Save energy</button></div>
-              <form id="lumi-ask-form" class="lumi-form"><label for="lumi-question">Your question</label><div class="lumi-input-row"><input id="lumi-question" type="text" maxlength="280" required autocomplete="off" placeholder="Ask about Dubai, heat, travel, food…"><button type="submit">Ask ↗</button></div></form>
-              <div class="lumi-answer" id="lumi-answer" role="status" aria-live="polite"><strong>Lumi · Your local climate guide</strong><p>Ask me about your forecast or how LUNARIS can help. I won't guess missing conditions or invent environmental claims.</p></div>
+            <div class="lumi-assistant" id="lumi-assistant" aria-label="Ask Lumi environmental assistant">
+              <div class="lumi-assistant-top"><strong>Ask Lumi</strong><span id="lumi-mode">Groq conversation · evidence tools · local fallback</span><button class="lumi-clear" id="lumi-clear" type="button">Clear chat</button></div>
+              <p class="lumi-helper">Ask about Dubai weather, activity timing, lower-impact choices, sourced venues, NASA POWER evidence or city action. Lumi uses a secure server-side AI service when configured and falls back to the bounded local guide when it is unavailable.</p>
+              <div class="lumi-messages" id="lumi-messages" role="log" aria-live="polite" aria-relevant="additions text">
+                <article class="lumi-message assistant"><strong>Lumi</strong><p>Hi — I can use live LUNARIS tools when they are available, and I will label estimates and missing data. What would you like to understand?</p></article>
+              </div>
+              <div class="lumi-quick-asks" role="group" aria-label="Suggested questions"><button type="button" data-lumi-ask="What is the weather in Dubai today?">Dubai weather</button><button type="button" data-lumi-ask="When should I go running for 45 minutes?">Plan a run</button><button type="button" data-lumi-ask="How can I help improve Dubai's greenery?">Improve my city</button><button type="button" data-lumi-ask="What does the NASA POWER heat study show?">Heat study</button></div>
+              <form id="lumi-ask-form" class="lumi-form"><label for="lumi-question">Your question</label><div class="lumi-input-row"><input id="lumi-question" type="text" minlength="2" maxlength="600" required autocomplete="off" enterkeyhint="send" placeholder="Ask Lumi about Dubai, heat, travel, food…"><button id="lumi-submit" type="submit">Ask ↗</button></div></form>
+              <div class="lumi-status" id="lumi-status" role="status" aria-live="polite"></div>
+              <button class="lumi-retry" id="lumi-retry" type="button" hidden>Retry with AI</button>
+              <nav class="lumi-links" aria-label="Related LUNARIS tools"><button type="button" data-route="heatshield">HeatShield</button><button type="button" data-route="explore">Explore</button><button type="button" data-route="choices">Choices</button><a href="./action-atlas/">Action Atlas</a><a href="/tour/">Guided tour</a></nav>
+              <p class="lumi-privacy">Conversation history stays in this browser tab and is sent only for the current response. Do not share sensitive personal information. Lumi is not a medical, emergency or professional safety authority.</p>
             </div>
           </div>
         </section>

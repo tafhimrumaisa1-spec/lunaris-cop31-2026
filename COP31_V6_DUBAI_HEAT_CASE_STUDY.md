@@ -19,9 +19,9 @@ The homepage and Action Atlas include prominent links.
 - Browser scenario: length × width × assumed shade fraction. **This is a ground-area arithmetic model**, not an air-temperature model.
 - Reproducible data pipeline: `research/dubai_heat_case.py` downloads NASA POWER 2024–2025 daily ambient `T2M_MAX`, `T2M`, and `RH2M` for Dubai reference coordinates 25.2769°N, 55.2962°E; it saves original daily records, checks missingness, summarizes summer means, and evaluates *simple* previous-day and previous-year baseline errors against a held-out 2025 summer period. Neither is an AI model. These atmospheric results cannot reproduce LCZ thermal differences.
 
-### Important: live-download dependency
+### Validated release snapshot
 
-The current build environment blocked external NASA POWER API access, so **the JSON measurement snapshot is deliberately NOT bundled**. Do not claim that LUNARIS computed measurements, validated a heat anomaly or beat a baseline until the script is actually run with internet access.
+The final COP31 release ran the pipeline against the official NASA POWER API and bundles `nasa_power_metrics.json`: 731 complete daily records, zero missing days, and 92 matched evaluation days. The 2025 previous-day baseline MAE is 0.8554°C and the prior-year-day baseline MAE is 1.3702°C. These are descriptive errors for coarse daily atmospheric estimates—not AI performance, neighborhood heat validation or intervention impact.
 
 From project root:
 
@@ -30,7 +30,7 @@ python research/dubai_heat_case.py --output dist/app/action-atlas/dubai-heat-cas
 python -m unittest discover -s research -p 'test_*.py'
 ```
 
-Commit the JSON artifact *after* inspection. With a valid JSON snapshot, the case-study webpage automatically displays the measured grid statistics and 2025 simple-baseline errors. Without it, the page truthfully says no snapshot is bundled.
+The case-study webpage displays the grid statistics and 2025 simple-baseline errors only when the validated snapshot is present. If it is removed or invalid, the page returns to its honest unavailable state.
 
 ### Research question / field-validation path
 

@@ -251,8 +251,8 @@ function rankedWindows() {
       const heatPenalty = x.apparent >= 40 ? 12 : x.apparent >= 35 ? 5 : 0;
       const vigorous = ['run','cycle'].includes(state.activity);
       const activityPenalty = vigorous && x.apparent >= 32 ? 5 : 0;
-      const sunPenalty = exposure === 'exposed' && x.isDay && x.apparent >= 30 ? 4 : 0;
-      const longExposurePenalty = duration >= 60 && exposure !== 'indoor' && x.apparent >= 32 ? 5 : 0;
+      const sunPenalty = setting === 'exposed' && x.isDay && x.apparent >= 30 ? 4 : 0;
+      const longExposurePenalty = duration >= 60 && setting !== 'indoor' && x.apparent >= 32 ? 5 : 0;
       return { ...x, score: comfortDistance + rainPenalty + heatPenalty + activityPenalty + sunPenalty + longExposurePenalty + (plan.apparent >= 40 ? 15 : plan.apparent >= 35 ? 8 : 0) + (plan.rain >= 50 ? 5 : 0) + Math.max(0,plan.apparent-x.apparent)*0.5 };
     }).filter(Boolean).sort((a, b) => a.score - b.score).slice(0, 3);
 }
@@ -640,12 +640,12 @@ function openPreferences() {
 }
 
 
-// Lumi local guide v1: intentionally bounded knowledge and live state, NOT a generative LLM.
-// Text is rendered with textContent to avoid turning user questions into HTML.
+// Bounded local fallback for provider or server-side AI unavailability.
+// User and model text is always rendered with textContent, never as HTML.
 function lumiRespond(rawQuestion) {
   const q = String(rawQuestion || '').trim().toLowerCase();
   const observations = state.forecast;
-  const reply = { title: 'Lumi · Evidence-aware guide', text: '', label: '', href: '' };
+  const reply = { title: 'Lumi · Local guide fallback', text: '', label: '', href: '' };
   if (!q) return null;
   if (/weather|temperature|forecast|humid|rain|hot today|dubai now/.test(q)) {
     const t = observations?.current?.temperature_2m;
@@ -675,44 +675,113 @@ function lumiRespond(rawQuestion) {
     reply.text = 'Explore has a small source-attributed Dubai venue catalogue, including a café with documented practices and hotels listed in Dubai tourism sustainability awards. A listed practice is not proof that a venue has a lower carbon footprint; operating hours and availability are not live.';
     reply.label = 'Explore Dubai'; reply.href = '#explore';
   } else if (/what is lunaris|who are you|help|can you do|hello|hi lumi/.test(q)) {
-    reply.text = 'I am Lumi, your built-in LUNARIS climate guide. I can explain current app weather readings when available, plan outdoor activities through HeatShield, explore more responsible choices, and guide you to Dubai Action. I am not a general-purpose AI chatbot yet, and I will not invent missing facts.';
+    reply.text = 'I am Lumi, the LUNARIS environmental companion. When the secure AI service is available I can have a broader conversation and use allowlisted platform tools. This local fallback can explain current app weather readings, HeatShield, Choices, Explore, Dubai Action and the COP31 research journey without inventing missing facts.';
     reply.label = 'Explore the Action Atlas'; reply.href = './action-atlas/';
   } else {
-    reply.text = 'I do not have a reliable answer to that question in my current local knowledge. I can help with Dubai weather, HeatShield activity planning, FoodPrint, GreenMiles, WattFlow, environmental venues, or the Action Atlas. For broader environmental research, a sourced AI service would be needed.';
+    reply.text = 'The secure conversational service is unavailable, and I do not have a reliable local answer to that question. This fallback can still help with Dubai weather, HeatShield activity planning, FoodPrint, GreenMiles, WattFlow, environmental venues, or the Action Atlas.';
     reply.label = 'Explore the Action Atlas'; reply.href = './action-atlas/';
   }
   return reply;
 }
-function showLumiAnswer(question) {
-  const result = lumiRespond(question);
-  if (!result) return;
-  const target = $('#lumi-answer');
-  if (!target) return;
-  target.replaceChildren();
-  const title = document.createElement('strong'); title.textContent = result.title;
-  const p = document.createElement('p'); p.textContent = result.text;
-  target.append(title, p);
-  if (result.href) {
-    const link = document.createElement('a'); link.textContent = `${result.label} →`;
-    link.href = result.href;
-    if (result.href[0] === '#') {
-      link.addEventListener('click', e => { e.preventDefault(); routeTo(result.href.slice(1)); });
-    }
-    target.append(link);
+
+const lumiHistory = [];
+let lumiLastQuestion = '';
+let lumiBusy = false;
+
+function appendLumiMessage(role, text, options = {}) {
+  const target = $('#lumi-messages');
+  if (!target) return null;
+  const article = document.createElement('article');
+  article.className = `lumi-message ${role}${options.loading ? ' loading' : ''}${options.fallback ? ' fallback' : ''}`;
+  const title = document.createElement('strong');
+  title.textContent = role === 'user' ? 'You' : options.fallback ? 'Lumi · local fallback' : 'Lumi';
+  const body = document.createElement('p'); body.textContent = text;
+  article.append(title, body);
+  if (Array.isArray(options.sources) && options.sources.length) {
+    const sources = document.createElement('div'); sources.className = 'lumi-sources';
+    const label = document.createElement('span'); label.textContent = 'Sources used: '; sources.append(label);
+    options.sources.forEach((source, index) => {
+      try {
+        const url = new URL(source.url); if (url.protocol !== 'https:') return;
+        if (index) sources.append(document.createTextNode(' · '));
+        const link = document.createElement('a'); link.href = url.href; link.target = '_blank'; link.rel = 'noopener noreferrer'; link.textContent = source.name || url.hostname;
+        sources.append(link);
+      } catch { /* Invalid source URLs are omitted. */ }
+    });
+    article.append(sources);
+  }
+  if (Array.isArray(options.links)) {
+    const links = document.createElement('div'); links.className = 'lumi-message-links';
+    options.links.slice(0, 4).forEach(item => {
+      if (!item?.href || !item?.label) return;
+      const link = document.createElement('a'); link.href = item.href; link.textContent = `${item.label} →`;
+      if (item.href[0] === '#') link.addEventListener('click', event => { event.preventDefault(); routeTo(item.href.slice(1)); });
+      links.append(link);
+    });
+    article.append(links);
+  }
+  target.append(article); target.scrollTop = target.scrollHeight;
+  return article;
+}
+
+function setLumiBusy(busy) {
+  lumiBusy = busy;
+  const input = $('#lumi-question'), submit = $('#lumi-submit');
+  if (input) input.disabled = busy;
+  if (submit) { submit.disabled = busy; submit.textContent = busy ? 'Thinking…' : 'Ask ↗'; }
+}
+
+async function askLumi(question, retry = false) {
+  const clean = String(question || '').trim();
+  if (lumiBusy || clean.length < 2) return;
+  lumiLastQuestion = clean;
+  if (!retry) { appendLumiMessage('user', clean); lumiHistory.push({ role: 'user', content: clean }); }
+  const status = $('#lumi-status'), retryButton = $('#lumi-retry');
+  if (status) status.textContent = 'Lumi is checking the available evidence…';
+  if (retryButton) retryButton.hidden = true;
+  setLumiBusy(true);
+  const loading = appendLumiMessage('assistant', 'Checking LUNARIS tools and sources…', { loading: true });
+  try {
+    const controller = new AbortController(); const timer = setTimeout(() => controller.abort(), 16000);
+    const response = await fetch('/api/lumi', { method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' }, body: JSON.stringify({ messages: lumiHistory.slice(-10) }), signal: controller.signal });
+    clearTimeout(timer);
+    const data = await response.json().catch(() => ({}));
+    if (!response.ok || typeof data.reply !== 'string') throw new Error(data?.error?.message || 'The conversational service is unavailable.');
+    loading?.remove();
+    appendLumiMessage('assistant', data.reply, { sources: data.sources, links: data.links });
+    lumiHistory.push({ role: 'assistant', content: data.reply.slice(0, 600) });
+    if (status) status.textContent = data.tools_used?.length ? `AI response · live tools: ${data.tools_used.join(', ')}` : 'AI response · no live tool was required';
+    const mode = $('#lumi-mode'); if (mode) mode.textContent = `Groq conversation · ${data.model || 'configured model'} · server-side tools`;
+  } catch {
+    loading?.remove();
+    const fallback = lumiRespond(clean);
+    if (fallback) appendLumiMessage('assistant', fallback.text, { fallback: true, links: fallback.href ? [{ label: fallback.label, href: fallback.href }] : [] });
+    if (status) status.textContent = 'AI unavailable · the bounded local guide answered without inventing data.';
+    if (retryButton) retryButton.hidden = false;
+    const mode = $('#lumi-mode'); if (mode) mode.textContent = 'Local evidence guide · AI unavailable';
+  } finally {
+    setLumiBusy(false); $('#lumi-question')?.focus({ preventScroll: true });
   }
 }
+
 function bindLumiAssistant() {
   const form = $('#lumi-ask-form');
   if (!form) return;
   form.addEventListener('submit', event => {
     event.preventDefault();
-    const input = $('#lumi-question'); showLumiAnswer(input.value);
+    const input = $('#lumi-question'), question = input.value; input.value = ''; askLumi(question);
   });
   $$('[data-lumi-ask]').forEach(btn => btn.addEventListener('click', () => {
     const question = btn.dataset.lumiAsk;
     $('#lumi-question').value = question;
-    showLumiAnswer(question);
+    askLumi(question);
   }));
+  $('#lumi-clear')?.addEventListener('click', () => {
+    lumiHistory.length = 0; lumiLastQuestion = '';
+    const messages = $('#lumi-messages'); if (messages) { messages.replaceChildren(); appendLumiMessage('assistant', 'Conversation cleared. What would you like to understand?'); }
+    $('#lumi-retry').hidden = true; $('#lumi-status').textContent = 'History cleared from this browser tab.'; $('#lumi-question').focus();
+  });
+  $('#lumi-retry')?.addEventListener('click', () => askLumi(lumiLastQuestion, true));
 }
 
 function init() {
